@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<appender name="general" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d][%-3p][%t] %c (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+
+	<appender name="file" class="org.apache.log4j.RollingFileAppender">
+	   <param name="append" value="false" />
+	   <param name="maxFileSize" value="5MB" />
+	   <param name="maxBackupIndex" value="5" />
+	   <param name="file" value="D:/work/logs/apidemo/log4j.log" />
+	   <layout class="org.apache.log4j.PatternLayout">
+		<param name="ConversionPattern" 
+			value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+	   </layout>
+	</appender>
+
+	<category name="org.eclipse.jetty" additivity="false">
+		<priority value="INFO" />
+		<appender-ref ref="general" />
+	</category>
+
+	<category name="org.springframework" additivity="false">
+		<priority value="INFO" />
+		<appender-ref ref="general" />
+
+	</category>
+
+	<category name="org.apache" additivity="false">
+		<priority value="INFO" />
+		<appender-ref ref="general" />
+
+	</category>
+
+	<category name="org.dozer" additivity="false">
+		<priority value="DEBUG" />
+		<appender-ref ref="general" />
+	</category>
+
+	<category name="org.hibernate" additivity="false">
+		<priority value="ERROR" />
+		<appender-ref ref="general" />
+
+	</category>
+
+	<category name="es.indra.mpr.rest.demo" additivity="false">
+		<priority value="DEBUG" />
+		<appender-ref ref="general" />
+	</category>
+
+
+	<root>
+		<priority value="DEBUG" />
+		<appender-ref ref="general" />
+		<appender-ref ref="file" />
+	</root>
+	
+</log4j:configuration>
