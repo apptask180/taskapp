@@ -8,4 +8,6 @@ public interface UserService {
 	 public User create(User user) throws TaskException;
 	 public User findByEmail(String email) throws TaskException;
 	 public User update(User user)throws TaskException;
+	 public User findByName(String name)throws TaskException;
+	 public boolean login(User user)throws TaskException;
 }
